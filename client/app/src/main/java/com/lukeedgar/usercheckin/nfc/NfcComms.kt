@@ -27,8 +27,8 @@ class NfcComms {
         }
     }
 
-        fun readTag(tag: MifareUltralight): String? {
-            return tag.use { mifare ->
+        fun readTag(tag: Tag): String? {
+            return MifareUltralight.get(tag).use { mifare ->
                 mifare.connect()
                 val payload = mifare.readPages(4)
                 String(payload, Charset.forName("US-ASCII"))
