@@ -1,0 +1,164 @@
+<style>
+    body {
+        font-family: 'Varela Round', sans-serif;
+        background-color: #e3e3e3;
+    }
+
+    p, #main-title, #map {
+        padding: 3vh 5vw;
+    }
+
+    p {
+       color: #333; 
+       font-size: 20px;
+    }
+
+    #main {
+        width: 60%;
+        height: 150%;
+        margin: auto;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.11), 0 2px 2px rgba(0,0,0,0.11), 0 4px 4px rgba(0,0,0,0.11), 0 8px 8px rgba(0,0,0,0.11), 0 16px 16px rgba(0,0,0,0.11), 0 32px 32px rgba(0,0,0,0.11);
+        background-color: white;
+    }
+
+    #main-img-holder {
+        height: 20%;
+    }
+
+    #main-title {
+        font-size: 30px;
+        padding-top: 8vh;
+        padding-bottom: 2vh;
+    }
+
+    #main-title-two {
+        font-size: 35px;
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+        color: white;
+        background: rgb(46, 0, 139);
+    }
+
+    #main-nav {
+        height: 50px;
+        background-color:rgb(245, 245, 245);
+    }
+
+    #main-e-mail-img {
+        width: 85%;
+        padding: 20px 20px 0px 20px;
+    }
+
+    #medal-img {
+        width: 30%;
+        padding: 0px 3vw 3vh 3vw;
+    }
+
+    #medal-img-holder {
+        width: 100%;
+    }
+
+    #map-holder, #desc-para {
+        background-color: #f5f5f5;
+    }
+
+    #desc-para-pink {
+        color: white;
+        background-color: rgb(228, 0, 133);
+    }
+
+    #header-para {
+        font-size: 22px;
+        padding-top: 4vh;
+        padding-bottom: 0px;
+    }
+
+    #footer {
+        height: 100px;
+        background-color: #e3e3e3;
+    }
+
+    #reminder {
+        margin-top: 0px;
+        font-size: 18px;
+        color: rgb(228, 0, 133);
+    }
+
+    button[type="button"] {
+        font-family: 'Varela Round', sans-serif;
+        font-style: normal;
+        font-weight: 100;
+        font-size: 20px;
+        background-color: rgb(0, 182, 182);
+        padding: 15px;
+        width: 200px;
+        border-radius: 3px;
+        margin-bottom: 20px;
+        color: white;
+        border: 0px;
+}
+
+</style>
+
+<!DOCTYPE html>
+    <head>
+        <title>Thank you for volunteering!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round&amp;display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <table id="main">
+            <tr>
+                <th id="main-img-holder">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/43/Cancer_Research_UK.svg/1200px-Cancer_Research_UK.svg.png" id="main-e-mail-img">
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <div id="main-title">Hi {enter userName here}!</div>
+                    <div id="main-title-two">Thank you for checking in to volunteer!</div>
+                </th>                
+            </tr>
+            <tr>
+                <th>
+                    <p id="desc-para-pink">You have volunteered {n} times, great work!</p>
+                </th>                
+            </tr>
+            <tr>
+                <th>
+                    <p id="desc-para">We run 400 events annually, but we can’t do this without the help of volunteers on the day to support our 700,000 participants and ensure they have a great day. Thank you very much for your participation in the fight to beat cancer sooner.</p>
+                </th>                
+            </tr>
+            <tr>
+                <th>
+                    <div id="medal-img-holder">
+                        <img src="../Images/medal.png" id="medal-img">
+                    </div>
+                </th>                
+            </tr>
+            <tr>
+                <th>
+                    <div id="map-holder">
+                        <p id="header-para">So people can recognise you, pick up your t-shirt here!</p>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1214.6849585114717!2d-0.7099583218057987!3d52.490543163685466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48779c8abe3e4e17%3A0xaed08d906b6ef3de!2sCorby%20Central%20Park%20and%20Boating%20Lake!5e0!3m2!1sen!2suk!4v1580397753671!5m2!1sen!2suk" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" id="map"></iframe>
+                        <p id="reminder"><i>(Remember to bring your t-shirt back to the same location when you have finished!)</i></p>
+                    </div>
+                </th>                
+            </tr>
+            <tr>
+                <th>
+                    <div>
+                        <p id="header-para">Want to find out about other volunteering opporuntinies in your area? Click on the button below:</p>
+                        <button type="button">Volunteer more!</button>
+                    </div>
+                </th>                
+            </tr>
+            <tr>
+                <th>
+                    <div id="footer">
+                    </div>
+                </th>                
+            </tr>
+        </table>
+    </body>
+</html>
