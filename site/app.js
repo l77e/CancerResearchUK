@@ -19,11 +19,6 @@ var routes = require('./routes')
 
 const app = express();
 
-const path = require('path')
-const projectRoot = path.resolve(__dirname, '../')
-app.use('static', express.static(projectRoot + '/public'))
-app.use('dist', express.static(__dirname))
-
 app.use(express.static(__dirname + 'public'));
 
 app.use(routes)
