@@ -10,16 +10,15 @@ import org.json.JSONException
 import org.json.JSONObject
 
 
-class EmailSender(val context: Context) {
+class EmailSender(private val context: Context) {
 
     fun send(email : Email) {
         val callAPI = CallAPI()
         val url =  "https://us-central1-cancerresearchsystem.cloudfunctions.net/send-email"
         var text = "no response"
         val jsonBody = JSONObject()
-        jsonBody.put("message", "it is wednesday my dudes")
+        jsonBody.put("message", email.body)
         val response = callAPI.doInBackground(context, url, jsonBody)
-        val done = true
     }
 
 }
@@ -27,7 +26,8 @@ class EmailSender(val context: Context) {
 
 open class CallAPI  {
 
-    public fun doInBackground(context: Context, url: String, jsonBody : JSONObject) {
+    public fun doInBackground(context: Context, url: String, jsonBody : JSONObject) : String {
+        var finalResponse = ""
         try {
             val requestQueue = Volley.newRequestQueue(context)
             val mRequestBody = jsonBody.toString()
@@ -38,7 +38,6 @@ open class CallAPI  {
                 Response.ErrorListener { error -> Log.e("LOG_VOLLEY", error.toString()) }) {
                 override fun getBodyContentType(): String = "application/json; charset=utf-8"
 
-
                 @Throws(AuthFailureError::class)
                 override fun getBody(): ByteArray =
                     mRequestBody.toByteArray(charset("utf-8"))
@@ -46,6 +45,7 @@ open class CallAPI  {
                 override fun parseNetworkResponse(response: NetworkResponse): Response<String> {
                     var responseString = ""
                     responseString = response.statusCode.toString()
+                    finalResponse = responseString
                     return Response.success(
                         responseString,
                         HttpHeaderParser.parseCacheHeaders(response)
@@ -56,5 +56,6 @@ open class CallAPI  {
         } catch (e: JSONException) {
             e.printStackTrace()
         }
+        return finalResponse
     }
 }
