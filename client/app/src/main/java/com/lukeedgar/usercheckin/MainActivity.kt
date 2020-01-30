@@ -33,9 +33,9 @@ class MainActivity : AppCompatActivity() {
         }
         pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
 
-        val ndef = IntentFilter(NfcAdapter.ACTION_NDEF_DISCOVERED).apply {
+        val ndef = IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED).apply {
             try {
-                addDataType("plain/text")    /* Handles all MIME based dispatches.
+                addDataType("*/*")    /* Handles all MIME based dispatches.
                              You should specify only the ones that you need. */
             } catch (e: IntentFilter.MalformedMimeTypeException) {
                 throw RuntimeException("fail", e)
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
         email_button.setOnClickListener {
             val emailSender = EmailSender(applicationContext)
-            val content = """{ "message" : "This email was sent via android"}"""
+            val content = "1"
             val email = Email("lukeedgar@outlook.com","lukeedgar@outlook.com", content)
             emailSender.send(email)
             Toast.makeText(applicationContext, "Thanks! An email has been sent", Toast.LENGTH_LONG).show()
@@ -82,21 +82,21 @@ class MainActivity : AppCompatActivity() {
 
     public override fun onResume() {
         super.onResume()
-        nfcAdapter.enableForegroundDispatch(this, pendingIntent, intentFiltersArray, techListsArray)
+        nfcAdapter.enableForegroundDispatch(this, pendingIntent, null, null)
     }
 
     private fun nfcHandler(tag : Tag) {
         val nfcComms = NfcComms()
         Toast.makeText(applicationContext, "gfdgdfgdfgdg", Toast.LENGTH_LONG).show()
         if (rw_switch.isChecked){
-            instruction_textview.text = "Writting..."
+            instruction_textview.text = getString(R.string.writing_nfc)
             nfcComms.writeTag(tag, "bears")
-            instruction_textview.text = "Write Success"
+            instruction_textview.text = getString(R.string.write_nfc_success)
         }else {
-            instruction_textview.text = "Reading..."
+            instruction_textview.text = getString(R.string.reading_nfc)
             val content = nfcComms.readTag(tag)
             Toast.makeText(applicationContext, content, Toast.LENGTH_LONG ).show()
-            instruction_textview.text = "Read Success"
+            instruction_textview.text = getString(R.string.checkin_success)
         }
     }
 }

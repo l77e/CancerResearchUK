@@ -8,7 +8,7 @@ import android.nfc.NdefRecord
 
 class NfcComms {
 
-    fun getNdefRecord() : NdefRecord {
+    fun getNdefRecord(): NdefRecord {
         return NdefRecord.createMime(
             "application/com.lukeedgar.usercheckin",
             "Beam me up, Android".toByteArray(Charset.forName("US-ASCII"))
@@ -16,24 +16,22 @@ class NfcComms {
     }
 
     fun writeTag(tag: Tag, tagText: String) {
-        MifareUltralight.get(tag)?.use { ultralight ->
-            ultralight.connect()
-            Charset.forName("US-ASCII").also { usAscii ->
-                ultralight.writePage(4, "abcd".toByteArray(usAscii))
-                ultralight.writePage(5, "efgh".toByteArray(usAscii))
-                ultralight.writePage(6, "ijkl".toByteArray(usAscii))
-                ultralight.writePage(7, "mnop".toByteArray(usAscii))
-            }
+        val miTag = MifareUltralight.get(tag)
+        miTag.connect()
+        Charset.forName("US-ASCII").also { usAscii ->
+            miTag.writePage(4, "abcd".toByteArray(usAscii))
+            miTag.writePage(5, "efgh".toByteArray(usAscii))
+            miTag.writePage(6, "ijkl".toByteArray(usAscii))
+            miTag.writePage(7, "mnop".toByteArray(usAscii))
         }
     }
 
-        fun readTag(tag: Tag): String? {
-            return MifareUltralight.get(tag).use { mifare ->
-                mifare.connect()
-                val payload = mifare.readPages(4)
-                String(payload, Charset.forName("US-ASCII"))
-            }
-        }
 
+    public fun readTag(tag: Tag): String? {
+        val miTag = MifareUltralight.get(tag)
+        miTag.connect()
+        val payload = miTag.readPages(4)
+        return String(payload, Charset.forName("US-ASCII"))
 
+    }
 }

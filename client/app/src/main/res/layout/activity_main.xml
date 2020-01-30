@@ -6,23 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/title_textbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Cancer Research UK "
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/activity_description_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event Check In"
+        app:layout_constraintStart_toStartOf="@+id/title_textbox"
+        app:layout_constraintTop_toBottomOf="@+id/title_textbox" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="171dp"
         android:layout_height="195dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintBottom_toTopOf="@+id/instruction_textview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.728"
         app:srcCompat="@drawable/cruk_research" />
 
     <TextView
         android:id="@+id/instruction_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        android:text="Tap contactless to continue..."
+        app:layout_constraintBottom_toTopOf="@+id/rw_switch"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.704" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="88dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="29dp"
+        app:layout_constraintBottom_toTopOf="@+id/rw_switch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/instruction_textview"
+        app:layout_constraintVertical_bias="0.367"
+        app:srcCompat="@drawable/contactless" />
 
     <Switch
         android:id="@+id/rw_switch"
@@ -41,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="157dp"
         android:layout_marginEnd="166dp"
-        android:layout_marginBottom="152dp"
+        android:layout_marginBottom="64dp"
         android:text="Send Test Email"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

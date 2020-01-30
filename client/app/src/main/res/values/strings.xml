@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">UserCheckIn</string>
+    <string name="checkin_success">Checkin Successful.</string>
+    <string name="reading_nfc">Reading...</string>
+    <string name="write_nfc_success">Write Success</string>
+    <string name="writing_nfc">Writting...</string>
 </resources>
