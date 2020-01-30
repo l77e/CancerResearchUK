@@ -43,58 +43,63 @@
   </main>
 
     <script>
-        $("#first-name-label").show();
-        $("#last-name-label").show();
-        $("#email-label-sign-up").hide();
-        $("#DOB-label").hide();
-        $("#postcode-label").hide();
-        $("#submit-button").hide();
 
-        console.log($("#first-name"))
+    var clickTracker = 0;
 
-        var clickTracker = 0;
+    $("#email-label-sign-up").hide();
+    $("#DOB-label").hide();
+    $("#postcode-label").hide();
+    $("#submit-button-section").hide();
+    $('#next-button').prop('disabled', true);
+    
+    let firstPageCheck = setInterval(function() {
+        if ($("#first-name")["0"].value.length > 2 && $("#last-name")["0"].value.length > 2) {
+            $('#next-button').prop('disabled', false)
+            }
+        }, 500)
 
+    let secondPageCheck = setInterval(function() {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($("#email")["0"].value)) {
+            $('#next-button').prop('disabled', false) 
+            }
+        }, 500)
+
+    let thirdPageCheck = setInterval(function() {
+        let validDOB
+        let validPostcode
+        console.log(($("#DOB")["0"].validity.valid))
+        console.log(($("#postcode")["0"].validity.valid))
+        if (($("#DOB")["0"].validity.valid) == true && (($("#postcode")["0"].validity.valid) == true)) {
+            $('#submit').prop('disabled', false) 
+            }   
+        }, 500)
+    
+
+    if (clickTracker == 0) {
+        firstPageCheck
         $("#next-button").click(function() {
-            if (clickTracker == 0) {
-                document.getElementById("next-button").disabled = true;
-                console.log(document.getElementById("next-button"))
-                if ($("#first-name")["0"].value.length > 2 && $("#last-name")["0"].value.length > 2) {
-                    clickTracker++
-                }
-            }
-
-            if (clickTracker == 1) { 
-                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($("#email")["0"].value)) {
-                    clickTracker++
-                }
-            }
-
-            if (clickTracker == 2) {
-                if ($("#DOB")["0"].validity.valid = "true") {
-
-                }
-            }
-        
-        if (clickTracker == 1) {
-            console.log($("#first-name"))           
+            clearInterval(firstPageCheck)
+            clickTracker++
+            $("#email-label-sign-up").show();
             $("#first-name-label").hide();
             $("#last-name-label").hide();
-            $("#email-label-sign-up").show();
             $("#DOB-label").hide();
             $("#postcode-label").hide();
-        }
+            $("#submit-button-section").hide();
+            $('#next-button').prop('disabled', true);
+            secondPageCheck
 
-        if (clickTracker == 2) {
-            $("#first-name-label").hide();
-            $("#last-name-label").hide();
-            $("#email-label-sign-up").hide();
-            $("#DOB-label").show();
-            $("#postcode-label").show();
-            $("#submit-button").show();
-            $("#next-button").hide();
-
-            setInterval(function(){ console.log($("#DOB")) }, 1000);
+            $("#next-button").click(function() {
+                clearInterval(secondPageCheck)
+                thirdPageCheck
+                $("#email-label-sign-up").hide();
+                $("#DOB-label").show();
+                $("#postcode-label").show();
+                $("#submit-button-section").show();
+                $("#submit").prop('disabled', true);
+                $("#next-button-section").hide();
+            })
         }
-        })
+    )}
 
     </script>
