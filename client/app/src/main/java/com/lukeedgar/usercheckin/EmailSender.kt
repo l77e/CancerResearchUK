@@ -2,6 +2,7 @@ package com.lukeedgar.usercheckin
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import com.android.volley.*
 import com.android.volley.toolbox.HttpHeaderParser
 import com.android.volley.toolbox.StringRequest
@@ -19,6 +20,8 @@ class EmailSender(private val context: Context) {
         val jsonBody = JSONObject()
         jsonBody.put("message", email.body)
         val response = callAPI.doInBackground(context, url, jsonBody)
+
+        Toast.makeText(context, response, Toast.LENGTH_LONG).show()
     }
 
 }
@@ -34,7 +37,10 @@ open class CallAPI  {
             val stringRequest: StringRequest = object : StringRequest(
                 Method.POST,
                 url,
-                Response.Listener { response -> Log.i("LOG_VOLLEY", response) },
+                Response.Listener{
+                        response ->
+                    Log.i("LOG_VOLLEY", response)
+                },
                 Response.ErrorListener { error -> Log.e("LOG_VOLLEY", error.toString()) }) {
                 override fun getBodyContentType(): String = "application/json; charset=utf-8"
 
@@ -45,11 +51,19 @@ open class CallAPI  {
                 override fun parseNetworkResponse(response: NetworkResponse): Response<String> {
                     var responseString = ""
                     responseString = response.statusCode.toString()
-                    finalResponse = responseString
                     return Response.success(
                         responseString,
                         HttpHeaderParser.parseCacheHeaders(response)
                     )
+                }
+
+                override fun hasHadResponseDelivered(): Boolean {
+                    return super.hasHadResponseDelivered()
+                }
+
+                override fun deliverResponse(response: String?) {
+                    super.deliverResponse(response)
+                        finalResponse = response!!
                 }
             }
             requestQueue.add(stringRequest)
