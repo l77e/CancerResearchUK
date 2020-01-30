@@ -15,4 +15,6 @@
 # [START gae_quickstart_yaml]
 runtime: nodejs
 env: flex
+network:
+  session_affinity: true
 # [END gae_quickstart_yaml]

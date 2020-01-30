@@ -36,7 +36,7 @@ width: 48%;
 .title-and-desc-back {
   height: 300px;
   width: 100%;
-  background: #000 url("../Images/form-header.jpg");
+  background: #000 url("images/form-header.jpg");
   background-position: center top;
   background-size: 100%;
   justify-content: top;
@@ -167,13 +167,13 @@ width: 100%;
 }
 
 #sign-in-button {
-  background: #000 url("../Images/form-header.jpg");
+  background: #000 url("images/form-header.jpg");
   background-position: center top;
   background-size: 100%;
 }
 
 #sign-up-button, #sign-up-form-header {
-background: #000 url("../Images/sign-up-form-header.PNG");
+background: #000 url("images/sign-up-form-header.PNG");
 background-position: center top;
 background-size: 100%;
 }
