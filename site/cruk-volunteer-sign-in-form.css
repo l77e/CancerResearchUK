@@ -214,7 +214,7 @@ main {
   border-right: none;
 }
 
-#submit-button-section, #next-button-section {
+#submit-button-section, #next-button-section, #submit-button {
     width: 100%;
     margin: auto;
     text-align: center;
@@ -226,7 +226,7 @@ main {
   margin: auto;
 }
 
-input[type="email"], button[type="submit"], button[type="back"], button[type="back-sign-up"], input[type="text"], input[type="date"], button[type="next"]  {
+input[type="email"], button[type="submit"], button[type="back"], button[type="back-sign-up"], input[type="text"], input[type="date"], button[type="next"], button[type="button"] {
   font-family: 'Varela Round', sans-serif;
     font-style: normal;
     font-weight: 100;
