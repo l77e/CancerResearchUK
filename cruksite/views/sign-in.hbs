@@ -1,0 +1,22 @@
+  <main>
+    <div id="title-and-form">
+      <div class="title-and-desc-back">
+        <div id="title-and-desc-holder">
+          <h1 class="title">CRUK Volunteer Sign-In</h1>
+          <p class="description">If you have forgotten you RFID tag, please enter your details below so we can make sure your attendence is recorded.</p>
+          <a href="/">
+            <section id="back-button-holder">
+              <button type="back" id="back">Go back</button>
+            </section>
+          </a>
+        </div>
+        <div class="title-and-desc-overlay"></div>
+      </div>
+      <form id="CRUK-vol-sign-in" action="/submit-vol-sign-in">
+        <label for="email" id="email-label">E-mail:&nbsp;&nbsp;&nbsp;<input id="email" type="email" placeholder="Enter your e-mail" name="email" required></label>
+        <section id="submit-button">
+          <button type="submit" class="animated bounce" id="submit">Complete Sign-in</button>
+        </section>
+      </form>
+    </div>
+  </main>
