@@ -15,10 +15,10 @@ class EmailSender(private val context: Context) {
 
     fun send(email : Email) {
         val callAPI = CallAPI()
-        val url =  "https://us-central1-cancerresearchsystem.cloudfunctions.net/send-email"
-        var text = "no response"
+        val url =  "https://us-central1-cancerresearchsystem.cloudfunctions.net/send-email-with-event"
         val jsonBody = JSONObject()
-        jsonBody.put("message", email.body)
+        jsonBody.put("user-id", email.userId)
+        jsonBody.put("event-id", email.eventId)
         val response = callAPI.doInBackground(context, url, jsonBody)
 
         Toast.makeText(context, response, Toast.LENGTH_LONG).show()

@@ -9,7 +9,9 @@ import android.nfc.tech.MifareClassic
 import android.nfc.tech.MifareUltralight
 import android.nfc.tech.Ndef
 import android.nfc.tech.NfcA
+import android.opengl.Visibility
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.lukeedgar.usercheckin.nfc.NfcComms
@@ -58,8 +60,7 @@ class MainActivity : AppCompatActivity() {
 
         email_button.setOnClickListener {
             val emailSender = EmailSender(applicationContext)
-            val content = "1"
-            val email = Email("lukeedgar@outlook.com","lukeedgar@outlook.com", content)
+            val email = Email("lukeedgar@outlook.com","lukeedgar@outlook.com", userId = "1", eventId = "1")
             emailSender.send(email)
             Toast.makeText(applicationContext, "Thanks! An email has been sent", Toast.LENGTH_LONG).show()
             instruction_textview.text = "Email sent!"
@@ -87,7 +88,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun nfcHandler(tag : Tag) {
         val nfcComms = NfcComms()
-        Toast.makeText(applicationContext, "gfdgdfgdfgdg", Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext, "Writing..", Toast.LENGTH_LONG).show()
         if (rw_switch.isChecked){
             instruction_textview.text = getString(R.string.writing_nfc)
             nfcComms.writeTag(tag, "bears")
@@ -95,8 +96,11 @@ class MainActivity : AppCompatActivity() {
         }else {
             instruction_textview.text = getString(R.string.reading_nfc)
             val content = nfcComms.readTag(tag)
-            Toast.makeText(applicationContext, content, Toast.LENGTH_LONG ).show()
+            //Toast.makeText(applicationContext, content, Toast.LENGTH_LONG ).show()
             instruction_textview.text = getString(R.string.checkin_success)
         }
+
+        email_button.visibility = View.VISIBLE
+        email_button.text = "Send Email to Alex Darlington"
     }
 }
